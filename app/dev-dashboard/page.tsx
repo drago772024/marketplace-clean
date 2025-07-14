@@ -459,6 +459,147 @@ export default function DevDashboard() {
           </div>
         </div>
 
+        {/* Communication Guide */}
+        <div className="bg-white rounded-lg shadow mb-8">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">💬 Guía de Comunicación con Cline</h2>
+          </div>
+          <div className="p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="font-medium text-gray-900 mb-3">🚀 Comandos de Desarrollo</h3>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Iniciar servidor local:</p>
+                    <p className="text-gray-600">"Inicia el servidor de desarrollo local"</p>
+                    <code className="text-xs bg-gray-200 px-2 py-1 rounded">npm run dev</code>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Deploy a Vercel:</p>
+                    <p className="text-gray-600">"Haz commit y push a Vercel con mensaje: [tu mensaje]"</p>
+                    <code className="text-xs bg-gray-200 px-2 py-1 rounded">git add . && git commit && git push</code>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Build de producción:</p>
+                    <p className="text-gray-600">"Construye el proyecto para producción"</p>
+                    <code className="text-xs bg-gray-200 px-2 py-1 rounded">npm run build</code>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="font-medium text-gray-900 mb-3">🧠 Gestión de Memoria</h3>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Guardar información importante:</p>
+                    <p className="text-gray-600">"Guarda esto en memoria: [información]"</p>
+                    <p className="text-xs text-blue-600">Se guardará en archivos .md para referencia</p>
+                  </div>
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Recordar contexto:</p>
+                    <p className="text-gray-600">"Recuerda que estábamos trabajando en [tarea]"</p>
+                    <p className="text-xs text-blue-600">Útil al retomar conversaciones</p>
+                  </div>
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <p className="font-medium text-gray-900 mb-1">Actualizar dashboard:</p>
+                    <p className="text-gray-600">"Marca como completada la tarea [nombre]"</p>
+                    <p className="text-xs text-blue-600">Actualiza progreso automáticamente</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Commands */}
+        <div className="bg-white rounded-lg shadow mb-8">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">⚡ Comandos Rápidos</h2>
+          </div>
+          <div className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h3 className="font-medium text-green-900 mb-2">🏠 Desarrollo Local</h3>
+                <ul className="text-sm text-green-700 space-y-1">
+                  <li>• "Inicia el servidor local"</li>
+                  <li>• "Abre localhost:3000"</li>
+                  <li>• "Instala dependencias"</li>
+                  <li>• "Revisa errores de build"</li>
+                </ul>
+              </div>
+              
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-medium text-blue-900 mb-2">🚀 Deploy & Git</h3>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• "Haz commit con mensaje X"</li>
+                  <li>• "Push a Vercel"</li>
+                  <li>• "Crea nueva rama"</li>
+                  <li>• "Revisa status de git"</li>
+                </ul>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="font-medium text-purple-900 mb-2">🔧 Tareas Específicas</h3>
+                <ul className="text-sm text-purple-700 space-y-1">
+                  <li>• "Agrega nueva página"</li>
+                  <li>• "Crea componente X"</li>
+                  <li>• "Configura base de datos"</li>
+                  <li>• "Actualiza dashboard"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Vercel Environments */}
+        <div className="bg-white rounded-lg shadow mb-8">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">🌐 Entornos de Vercel</h2>
+          </div>
+          <div className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="border-2 border-green-200 p-4 rounded-lg">
+                <div className="flex items-center mb-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                  <h3 className="font-medium text-gray-900">Production</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-2">
+                  <strong>Rama:</strong> main<br/>
+                  <strong>URL:</strong> vendemass.com<br/>
+                  <strong>Deploy:</strong> Automático en push
+                </p>
+                <p className="text-xs text-green-600">✅ Versión estable para usuarios</p>
+              </div>
+              
+              <div className="border-2 border-yellow-200 p-4 rounded-lg">
+                <div className="flex items-center mb-2">
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                  <h3 className="font-medium text-gray-900">Preview</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-2">
+                  <strong>Rama:</strong> Cualquier rama<br/>
+                  <strong>URL:</strong> Auto-generada<br/>
+                  <strong>Deploy:</strong> En cada push
+                </p>
+                <p className="text-xs text-yellow-600">🔄 Para probar antes de producción</p>
+              </div>
+              
+              <div className="border-2 border-blue-200 p-4 rounded-lg">
+                <div className="flex items-center mb-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                  <h3 className="font-medium text-gray-900">Development</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-2">
+                  <strong>Rama:</strong> Local<br/>
+                  <strong>URL:</strong> localhost:3000<br/>
+                  <strong>Deploy:</strong> npm run dev
+                </p>
+                <p className="text-xs text-blue-600">💻 Tu máquina local</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Security Features */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
