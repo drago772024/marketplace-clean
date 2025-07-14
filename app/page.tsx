@@ -99,6 +99,12 @@ export default function HomePage() {
             </div>
             
             <div className="flex items-center space-x-4">
+              <a 
+                href="/dev-dashboard" 
+                className="hidden md:flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors border border-gray-300 rounded-lg hover:border-primary-300"
+              >
+                🚀 Dev Dashboard
+              </a>
               <button className="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
                 <Heart className="w-6 h-6" />
               </button>
