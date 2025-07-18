@@ -1,0 +1,57 @@
+'use client'
+
+import { Heart } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useFavoritesStore } from '@/lib/stores/favorites'
+
+interface FavoriteButtonProps {
+  productId: string
+  className?: string
+}
+
+export default function FavoriteButton({ productId, className = '' }: FavoriteButtonProps) {
+  const { isFavorite, toggleFavorite } = useFavoritesStore()
+  const isActive = isFavorite(productId)
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite(productId)
+  }
+
+  return (
+    <motion.button
+      onClick={handleClick}
+      className={`favorite-button ${isActive ? 'active' : ''} ${className}`}
+      whileTap={{ scale: 0.9 }}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ 
+        scale: isActive ? 1 : 0.8, 
+        opacity: isActive ? 1 : 0 
+      }}
+      whileHover={{ scale: 1, opacity: 1 }}
+      transition={{ 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 20 
+      }}
+    >
+      <motion.div
+        animate={{ 
+          scale: isActive ? [1, 1.2, 1] : 1,
+          rotate: isActive ? [0, -10, 10, 0] : 0
+        }}
+        transition={{ 
+          duration: 0.3,
+          ease: "easeInOut"
+        }}
+      >
+        <Heart 
+          className={`w-5 h-5 transition-colors duration-200 ${
+            isActive ? 'fill-current' : ''
+          }`}
+        />
+      </motion.div>
+    </motion.button>
+  )
+}
