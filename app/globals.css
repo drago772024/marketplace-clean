@@ -91,9 +91,9 @@
     height: auto;
   }
   
-  /* Asegurar que el grid nunca cause overflow */
+  /* Grid permite expansión de tarjetas en hover */
   .products-grid {
-    overflow-x: hidden !important;
+    overflow: visible !important;
     max-width: 100% !important;
   }
   
@@ -193,9 +193,7 @@
     transform-origin: center;
   }
   
-  .product-card-app:hover .product-image {
-    transform: scale(1.1);
-  }
+  /* Efecto hover de imagen removido - se maneja en componente */
   
   /* Favorite heart button */
   .favorite-button {
@@ -237,12 +235,14 @@
     
     /* Contenedor responsivo con límites calculados */
     max-width: var(--container-max-width);
-    padding: var(--container-padding);
+    padding: var(--grid-gap);
     
-    /* Centrado perfecto y ajuste al contenedor padre */
+    /* Permitir que las tarjetas se salgan del grid en hover */
     box-sizing: border-box;
     justify-content: center;
     align-content: start;
+    overflow: visible;
+    position: relative;
   }
 
   /* =================================================================
@@ -257,12 +257,12 @@
       --grid-gap: 6px;
       --container-padding: 4px;
       --container-max-width: 100%;
-      /* Ajuste completo a la pantalla sin overflow */
+      /* Ajuste completo a la pantalla permitiendo hover expansión */
       width: calc(100% - 8px);
       margin: 0 auto;
       padding: 0 4px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      overflow: visible;
     }
     
     /* Prevenir scroll horizontal en móvil extra pequeño */
@@ -284,12 +284,12 @@
       --grid-gap: 8px;
       --container-padding: 6px;
       --container-max-width: 100%;
-      /* Ajuste completo a la pantalla sin overflow */
+      /* Ajuste completo a la pantalla permitiendo hover expansión */
       width: calc(100% - 12px);
       margin: 0 auto;
       padding: 0 6px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      overflow: visible;
     }
     
     /* Prevenir scroll horizontal en móvil pequeño */
@@ -311,12 +311,12 @@
       --grid-gap: 10px;
       --container-padding: 8px;
       --container-max-width: 100%;
-      /* Ajuste completo a la pantalla sin overflow */
+      /* Ajuste completo a la pantalla permitiendo hover expansión */
       width: calc(100% - 16px);
       margin: 0 auto;
       padding: 0 8px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      overflow: visible;
     }
     
     /* Prevenir scroll horizontal en móvil medio */
