@@ -123,7 +123,19 @@ export default function SidebarMenu({
               delay: isMenuOpen ? 0.05 : 0
             }}
           >
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--app-text)' }}>
+            <h2 
+              className="text-2xl font-bold cursor-pointer hover:transition-all" 
+              style={{ 
+                color: 'var(--app-text)',
+                transition: 'all 0.3s ease, text-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.textShadow = '0 0 12px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.5)'
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.textShadow = 'none'
+              }}
+            >
               VendeMass
             </h2>
             <p className="text-sm mt-1" style={{ color: 'var(--app-text-secondary)' }}>
@@ -147,7 +159,19 @@ export default function SidebarMenu({
                 delay: isMenuOpen ? 0.08 : 0
               }}
             >
-              <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--app-text)' }}>
+              <h3 
+                className="text-sm font-medium mb-3 cursor-pointer" 
+                style={{ 
+                  color: 'var(--app-text)',
+                  transition: 'all 0.3s ease, text-shadow 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.textShadow = '0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.4)'
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.textShadow = 'none'
+                }}
+              >
                 Vista
               </h3>
               <div className="flex space-x-2">
@@ -158,7 +182,13 @@ export default function SidebarMenu({
                       ? 'bg-blue-500 text-white' 
                       : 'bg-gray-100 text-gray-700'
                   }`}
+                  style={{ 
+                    transition: 'all 0.3s ease, text-shadow 0.3s ease'
+                  }}
                   whileTap={{ scale: 0.95 }}
+                  whileHover={{ 
+                    textShadow: currentView !== 'grid' ? '0 0 6px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.4)' : 'none'
+                  }}
                 >
                   <Grid className="w-4 h-4" />
                   <span className="text-sm">Cuadrícula</span>
@@ -170,7 +200,13 @@ export default function SidebarMenu({
                       ? 'bg-blue-500 text-white' 
                       : 'bg-gray-100 text-gray-700'
                   }`}
+                  style={{ 
+                    transition: 'all 0.3s ease, text-shadow 0.3s ease'
+                  }}
                   whileTap={{ scale: 0.95 }}
+                  whileHover={{ 
+                    textShadow: currentView !== 'list' ? '0 0 6px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.4)' : 'none'
+                  }}
                 >
                   <List className="w-4 h-4" />
                   <span className="text-sm">Lista</span>
@@ -186,17 +222,35 @@ export default function SidebarMenu({
             animate={{ opacity: isMenuOpen ? 1 : 0 }}
             transition={{ delay: isMenuOpen ? 0.4 : 0 }}
           >
-            <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--app-text)' }}>
+            <h3 
+              className="text-sm font-medium mb-3 cursor-pointer" 
+              style={{ 
+                color: 'var(--app-text)',
+                transition: 'all 0.3s ease, text-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.textShadow = '0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.textShadow = 'none'
+              }}
+            >
               Categorías
             </h3>
             <div className="space-y-2">
               {categories.map((category, index) => (
                 <motion.button
                   key={category}
-                  className="w-full text-left px-3 py-2 rounded-xl transition-all hover:bg-gray-100"
-                  style={{ color: 'var(--app-text)' }}
+                  className="w-full text-left px-3 py-2 rounded-xl transition-all hover:bg-gray-100 hover:text-shadow-elegant"
+                  style={{ 
+                    color: 'var(--app-text)',
+                    transition: 'all 0.3s ease, text-shadow 0.3s ease'
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  whileHover={{ x: 4 }}
+                  whileHover={{ 
+                    x: 4,
+                    textShadow: '0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)'
+                  }}
                   initial={{ opacity: 0, x: -15 }}
                   animate={{ 
                     opacity: isMenuOpen ? 1 : 0,
@@ -222,12 +276,30 @@ export default function SidebarMenu({
             animate={{ opacity: isMenuOpen ? 1 : 0 }}
             transition={{ delay: isMenuOpen ? 0.6 : 0 }}
           >
-            <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--app-text)' }}>
+            <h3 
+              className="text-sm font-medium mb-3 cursor-pointer" 
+              style={{ 
+                color: 'var(--app-text)',
+                transition: 'all 0.3s ease, text-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.textShadow = '0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.textShadow = 'none'
+              }}
+            >
               Filtros
             </h3>
             <motion.button
               className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-gray-100 w-full"
+              style={{ 
+                transition: 'all 0.3s ease, text-shadow 0.3s ease'
+              }}
               whileTap={{ scale: 0.98 }}
+              whileHover={{ 
+                textShadow: '0 0 6px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.4)'
+              }}
             >
               <Filter className="w-4 h-4" />
               <span className="text-sm">Filtros avanzados</span>
@@ -241,7 +313,19 @@ export default function SidebarMenu({
             animate={{ opacity: isMenuOpen ? 1 : 0 }}
             transition={{ delay: isMenuOpen ? 0.7 : 0 }}
           >
-            <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--app-text)' }}>
+            <h3 
+              className="text-sm font-medium mb-3 cursor-pointer" 
+              style={{ 
+                color: 'var(--app-text)',
+                transition: 'all 0.3s ease, text-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.textShadow = '0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.textShadow = 'none'
+              }}
+            >
               Mi Cuenta
             </h3>
             <div className="space-y-2">
@@ -250,9 +334,15 @@ export default function SidebarMenu({
                   key={item.label}
                   href={item.href}
                   className="flex items-center space-x-3 px-3 py-2 rounded-xl transition-all hover:bg-gray-100"
-                  style={{ color: 'var(--app-text)' }}
+                  style={{ 
+                    color: 'var(--app-text)',
+                    transition: 'all 0.3s ease, text-shadow 0.3s ease'
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  whileHover={{ x: 4 }}
+                  whileHover={{ 
+                    x: 4,
+                    textShadow: '0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)'
+                  }}
                   initial={{ opacity: 0, x: -15 }}
                   animate={{ 
                     opacity: isMenuOpen ? 1 : 0,
