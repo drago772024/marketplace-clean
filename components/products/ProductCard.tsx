@@ -34,18 +34,16 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
         y: -16,
         scale: 1.08,
         zIndex: 10,
-        boxShadow: "0 35px 60px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(37, 99, 235, 0.15)",
-        transition: { 
-          type: "spring", 
-          stiffness: 600, 
-          damping: 20,
-          duration: 0.15
-        }
+        boxShadow: "0 35px 60px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(37, 99, 235, 0.15)"
+      }}
+      transition={{ 
+        type: "tween", 
+        duration: 0.1,
+        ease: "easeOut"
       }}
       whileTap={{ scale: 1.05, y: -8 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0, zIndex: 1 }}
-      transition={{ duration: 0.3 }}
       style={{
         transformOrigin: "center center",
         willChange: "transform, box-shadow, z-index",

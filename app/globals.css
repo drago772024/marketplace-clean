@@ -74,6 +74,11 @@
     overflow-x: hidden;
   }
   
+  /* Excepción: permitir overflow en section de productos para hover effects */
+  section:has(.products-container) {
+    overflow: visible !important;
+  }
+  
   /* Reglas adicionales para prevenir scroll horizontal */
   .container, .max-w-4xl, .max-w-2xl {
     max-width: 100% !important;
@@ -550,6 +555,8 @@
   /* Contenedor de productos que se limita en pantallas grandes */
   .products-container {
     width: 100%;
+    overflow: visible;
+    position: relative;
   }
   
   /* Para pantallas grandes, limitar el contenedor de productos */
