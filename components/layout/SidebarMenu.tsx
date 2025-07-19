@@ -45,7 +45,7 @@ export default function SidebarMenu({
           position: 'fixed',
           top: '12px',
           left: isMenuOpen ? '260px' : '12px',
-          zIndex: 60,
+          zIndex: 80,
           backgroundColor: 'rgba(37, 99, 235, 0.9)',
           color: 'white',
           border: 'none',
@@ -60,9 +60,15 @@ export default function SidebarMenu({
           boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
         }}
         animate={{
-          left: isMenuOpen ? '260px' : '12px'
+          left: isMenuOpen ? '260px' : '12px',
+          scale: isMenuOpen ? 0.95 : 1
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ 
+          type: "spring",
+          stiffness: 600,
+          damping: 25,
+          mass: 0.5
+        }}
       >
         <motion.div
           animate={{ rotate: isMenuOpen ? 0 : 0 }}
@@ -83,23 +89,42 @@ export default function SidebarMenu({
         initial={false}
         animate={{
           width: isMenuOpen ? 280 : 8,
+          x: 0
         }}
         transition={{
-          duration: 0.3,
-          ease: "easeInOut"
+          type: "spring",
+          stiffness: 400,
+          damping: 30,
+          mass: 0.8,
+          duration: 0.15
         }}
         style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          height: '100vh',
+          zIndex: 70,
           backgroundColor: isMenuOpen ? 'var(--app-card-bg)' : 'rgba(37, 99, 235, 0.1)',
-          borderRight: isMenuOpen ? '1px solid var(--app-border)' : '2px solid rgba(37, 99, 235, 0.2)'
+          borderRight: isMenuOpen ? '1px solid var(--app-border)' : '2px solid rgba(37, 99, 235, 0.2)',
+          backdropFilter: isMenuOpen ? 'blur(10px)' : 'none',
+          boxShadow: isMenuOpen ? '4px 0 20px rgba(0, 0, 0, 0.1)' : 'none'
         }}
       >
         <div className="p-6 h-full overflow-y-auto">
           {/* Header */}
           <motion.div
             className="mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isMenuOpen ? 1 : 0 }}
-            transition={{ delay: isMenuOpen ? 0.2 : 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ 
+              opacity: isMenuOpen ? 1 : 0,
+              x: isMenuOpen ? 0 : -20
+            }}
+            transition={{ 
+              type: "spring",
+              stiffness: 500,
+              damping: 25,
+              delay: isMenuOpen ? 0.05 : 0
+            }}
           >
             <h2 className="text-2xl font-bold" style={{ color: 'var(--app-text)' }}>
               VendeMass
@@ -113,9 +138,17 @@ export default function SidebarMenu({
           {onViewChange && (
             <motion.div
               className="mb-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isMenuOpen ? 1 : 0 }}
-              transition={{ delay: isMenuOpen ? 0.3 : 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ 
+                opacity: isMenuOpen ? 1 : 0,
+                y: isMenuOpen ? 0 : 10
+              }}
+              transition={{ 
+                type: "spring",
+                stiffness: 600,
+                damping: 30,
+                delay: isMenuOpen ? 0.08 : 0
+              }}
             >
               <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--app-text)' }}>
                 Vista
@@ -167,14 +200,16 @@ export default function SidebarMenu({
                   style={{ color: 'var(--app-text)' }}
                   whileTap={{ scale: 0.98 }}
                   whileHover={{ x: 4 }}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ 
                     opacity: isMenuOpen ? 1 : 0,
-                    x: isMenuOpen ? 0 : -20
+                    x: isMenuOpen ? 0 : -15
                   }}
                   transition={{ 
-                    delay: isMenuOpen ? 0.5 + (index * 0.05) : 0,
-                    duration: 0.2
+                    type: "spring",
+                    stiffness: 700,
+                    damping: 35,
+                    delay: isMenuOpen ? 0.12 + (index * 0.02) : 0
                   }}
                 >
                   {category}
@@ -221,14 +256,16 @@ export default function SidebarMenu({
                   style={{ color: 'var(--app-text)' }}
                   whileTap={{ scale: 0.98 }}
                   whileHover={{ x: 4 }}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={{ 
                     opacity: isMenuOpen ? 1 : 0,
-                    x: isMenuOpen ? 0 : -20
+                    x: isMenuOpen ? 0 : -15
                   }}
                   transition={{ 
-                    delay: isMenuOpen ? 0.8 + (index * 0.05) : 0,
-                    duration: 0.2
+                    type: "spring",
+                    stiffness: 700,
+                    damping: 35,
+                    delay: isMenuOpen ? 0.18 + (index * 0.02) : 0
                   }}
                 >
                   <item.icon className="w-5 h-5" />
