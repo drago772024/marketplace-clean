@@ -45,24 +45,26 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
         onClick={onClick}
       >
         {/* Image Container */}
-        <div className="product-image-container group">
-          <div 
-            className="product-image"
-            onMouseEnter={() => setIsImageHovered(true)}
-            onMouseLeave={() => setIsImageHovered(false)}
-          >
+        <div 
+          className="product-image-container group"
+          onMouseEnter={() => setIsImageHovered(true)}
+          onMouseLeave={() => setIsImageHovered(false)}
+        >
+          <div className="product-image">
             <Image
               src={product.image}
               alt={product.name}
               fill
-              className="object-cover"
+              className="object-cover pointer-events-none"
               sizes="(max-width: 374px) 50vw, (max-width: 743px) 50vw, (max-width: 949px) 25vw, (max-width: 1127px) 20vw, (max-width: 1439px) 16.66vw, 14.28vw"
             />
           </div>
           
           {/* Favorite Button */}
-          <div className={`transition-opacity duration-200 ${isImageHovered || isProductFavorite ? 'opacity-100' : 'opacity-0'}`}>
-            <FavoriteButton productId={product.id.toString()} />
+          <div className={`absolute top-3 right-3 transition-opacity duration-200 ${isImageHovered || isProductFavorite ? 'opacity-100' : 'opacity-0'} pointer-events-none`}>
+            <div className="pointer-events-auto">
+              <FavoriteButton productId={product.id.toString()} />
+            </div>
           </div>
         
         {/* Discount Badge */}
