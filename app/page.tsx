@@ -222,11 +222,15 @@ export default function HomePage() {
                 <motion.div
                   className="flex items-center"
                   style={{
-                    marginLeft: isMenuOpen ? '0' : '60px'
+                    marginLeft: isMenuOpen ? '280px' : '60px'
                   }}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0,
+                    marginLeft: isMenuOpen ? '280px' : '60px'
+                  }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
                 >
                   <motion.h1 
                     className="text-2xl font-bold cursor-pointer" 

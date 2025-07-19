@@ -1,6 +1,6 @@
 'use client'
 
-import { Filter, Grid, List, Settings, User, Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Filter, Grid, List, Settings, User, Heart, ShoppingBag, ChevronLeft, Menu } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useMenuStore } from '@/lib/stores/menu'
 
@@ -35,26 +35,46 @@ export default function SidebarMenu({
 
   return (
     <>
-      {/* Menu Toggle Badge */}
+      {/* Menu Toggle Button */}
       <motion.button
         onClick={toggleMenu}
-        className="menu-toggle-badge"
-        whileTap={{ scale: 0.9 }}
-        whileHover={{ scale: 1.1 }}
+        className="menu-toggle-button"
+        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.05 }}
         style={{
-          left: isMenuOpen ? '292px' : '16px'
+          position: 'fixed',
+          top: '12px',
+          left: isMenuOpen ? '260px' : '12px',
+          zIndex: 60,
+          backgroundColor: 'rgba(37, 99, 235, 0.9)',
+          color: 'white',
+          border: 'none',
+          borderRadius: '12px',
+          padding: '8px 12px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontSize: '14px',
+          fontWeight: '500',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
         }}
+        animate={{
+          left: isMenuOpen ? '260px' : '12px'
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <motion.div
-          animate={{ rotate: isMenuOpen ? 180 : 0 }}
+          animate={{ rotate: isMenuOpen ? 0 : 0 }}
           transition={{ duration: 0.3 }}
         >
           {isMenuOpen ? (
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           ) : (
-            <ChevronRight className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           )}
         </motion.div>
+        <span>{isMenuOpen ? '' : 'Menu'}</span>
       </motion.button>
 
       {/* Sidebar Menu */}
@@ -62,11 +82,15 @@ export default function SidebarMenu({
         className={`sidebar-menu ${isMenuOpen ? 'open' : 'closed'}`}
         initial={false}
         animate={{
-          width: isMenuOpen ? 280 : 0,
+          width: isMenuOpen ? 280 : 8,
         }}
         transition={{
           duration: 0.3,
           ease: "easeInOut"
+        }}
+        style={{
+          backgroundColor: isMenuOpen ? 'var(--app-card-bg)' : 'rgba(37, 99, 235, 0.1)',
+          borderRight: isMenuOpen ? '1px solid var(--app-border)' : '2px solid rgba(37, 99, 235, 0.2)'
         }}
       >
         <div className="p-6 h-full overflow-y-auto">
