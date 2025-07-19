@@ -20,21 +20,9 @@ export default function FavoriteButton({ productId, className = '' }: FavoriteBu
   }
 
   return (
-    <motion.button
+    <button
       onClick={handleClick}
       className={`favorite-button ${isActive ? 'active' : ''} ${className}`}
-      whileTap={{ scale: 0.9 }}
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ 
-        scale: isActive ? 1 : 0.8, 
-        opacity: isActive ? 1 : 0 
-      }}
-      whileHover={{ scale: 1, opacity: 1 }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 300, 
-        damping: 20 
-      }}
     >
       <motion.div
         animate={{ 
@@ -52,6 +40,6 @@ export default function FavoriteButton({ productId, className = '' }: FavoriteBu
           }`}
         />
       </motion.div>
-    </motion.button>
+    </button>
   )
 }

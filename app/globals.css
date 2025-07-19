@@ -199,17 +199,13 @@
   
   /* Favorite heart button */
   .favorite-button {
-    @apply absolute top-3 right-3 w-10 h-10 rounded-full flex items-center justify-center;
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    opacity: 0;
     transform: scale(0.8);
   }
   
-  /* Hover effect del botón favorito removido - se maneja en componente */
-  
   .favorite-button.active {
-    opacity: 1;
     transform: scale(1);
     background-color: var(--app-accent);
     color: white;
