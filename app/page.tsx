@@ -200,9 +200,9 @@ export default function HomePage() {
         }}
         transition={{
           type: "spring",
-          stiffness: 400,
-          damping: 30,
-          mass: 0.8
+          stiffness: 800,
+          damping: 40,
+          mass: 0.3
         }}
         style={{
           minHeight: '100vh',

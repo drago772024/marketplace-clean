@@ -65,9 +65,9 @@ export default function SidebarMenu({
         }}
         transition={{ 
           type: "spring",
-          stiffness: 600,
-          damping: 25,
-          mass: 0.5
+          stiffness: 1000,
+          damping: 35,
+          mass: 0.2
         }}
       >
         <motion.div
@@ -93,10 +93,10 @@ export default function SidebarMenu({
         }}
         transition={{
           type: "spring",
-          stiffness: 400,
-          damping: 30,
-          mass: 0.8,
-          duration: 0.15
+          stiffness: 800,
+          damping: 40,
+          mass: 0.3,
+          duration: 0.08
         }}
         style={{
           position: 'fixed',

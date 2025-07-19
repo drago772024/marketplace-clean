@@ -31,24 +31,26 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       className="product-card-app"
       onClick={onClick}
       whileHover={{ 
-        y: -12,
-        scale: 1.05,
-        rotateY: 2,
-        boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15), 0 12px 20px rgba(37, 99, 235, 0.1)",
+        y: -16,
+        scale: 1.08,
+        zIndex: 10,
+        boxShadow: "0 35px 60px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(37, 99, 235, 0.15)",
         transition: { 
           type: "spring", 
-          stiffness: 400, 
-          damping: 15,
-          duration: 0.2
+          stiffness: 600, 
+          damping: 20,
+          duration: 0.15
         }
       }}
-      whileTap={{ scale: 1.02 }}
+      whileTap={{ scale: 1.05, y: -8 }}
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0, zIndex: 1 }}
       transition={{ duration: 0.3 }}
       style={{
         transformOrigin: "center center",
-        willChange: "transform, box-shadow"
+        willChange: "transform, box-shadow, z-index",
+        position: "relative",
+        zIndex: 1
       }}
     >
       {/* Image Container */}
@@ -85,12 +87,7 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       </div>
       
       {/* Product Info */}
-      <motion.div 
-        className="p-4 flex-1 flex flex-col justify-between"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
-      >
+      <div className="p-4 flex-1 flex flex-col justify-between">
         {/* Category */}
         <div className="text-sm mb-1" style={{ color: 'var(--app-text-secondary)' }}>
           {product.category}
@@ -124,10 +121,8 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
             )}
           </div>
           
-          <motion.button
+          <button
             className="app-button px-3 py-2 text-sm flex items-center space-x-1"
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
             onClick={(e) => {
               e.stopPropagation()
               // Add to cart logic here
@@ -135,9 +130,9 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
           >
             <ShoppingCart className="w-4 h-4" />
             <span>Agregar</span>
-          </motion.button>
+          </button>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   )
 }
