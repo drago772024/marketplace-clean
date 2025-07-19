@@ -45,12 +45,12 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
         onClick={onClick}
       >
         {/* Image Container */}
-        <div 
-          className="product-image-container group"
-          onMouseEnter={() => setIsImageHovered(true)}
-          onMouseLeave={() => setIsImageHovered(false)}
-        >
-          <div className="product-image">
+        <div className="product-image-container group">
+          <div 
+            className="product-image"
+            onMouseEnter={() => setIsImageHovered(true)}
+            onMouseLeave={() => setIsImageHovered(false)}
+          >
             <Image
               src={product.image}
               alt={product.name}
