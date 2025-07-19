@@ -193,19 +193,37 @@ export default function HomePage() {
       />
 
       {/* Main Content */}
-      <div className="main-content">
+      <motion.div 
+        className="main-content"
+        animate={{
+          marginLeft: isMenuOpen ? 280 : 8,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 30,
+          mass: 0.8
+        }}
+        style={{
+          minHeight: '100vh',
+          width: 'auto'
+        }}
+      >
         {/* Header con Auto-Hide */}
         <AnimatePresence>
           <motion.header
-            className="header-auto-hide fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b"
+            className="header-auto-hide fixed top-0 z-50 backdrop-blur-lg border-b"
             style={{ 
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               borderColor: 'var(--app-border)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+              left: isMenuOpen ? 280 : 8,
+              right: 0
             }}
             initial={{ y: -100 }}
             animate={{ 
-              y: (!isMobile || isAtTop || scrollDirection === 'up' || isHeaderHovered) ? 0 : -100 
+              y: (!isMobile || isAtTop || scrollDirection === 'up' || isHeaderHovered) ? 0 : -100,
+              left: isMenuOpen ? 280 : 8
             }}
             transition={{ 
               type: isMobile ? "tween" : "spring", 
@@ -221,14 +239,10 @@ export default function HomePage() {
                 {/* Logo */}
                 <motion.div
                   className="flex items-center"
-                  style={{
-                    marginLeft: isMenuOpen ? '280px' : '60px'
-                  }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ 
                     opacity: 1, 
-                    x: 0,
-                    marginLeft: isMenuOpen ? '280px' : '60px'
+                    x: 0
                   }}
                   transition={{ delay: 0.2, duration: 0.3 }}
                 >
@@ -559,7 +573,7 @@ export default function HomePage() {
             </div>
           </div>
         </footer>
-      </div>
+      </motion.div>
 
       {/* Mobile Bottom Navigation */}
       <MobileBottomNav

@@ -31,28 +31,29 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       className="product-card-app"
       onClick={onClick}
       whileHover={{ 
-        y: -8,
-        scale: 1.03,
+        y: -12,
+        scale: 1.05,
+        rotateY: 2,
+        boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15), 0 12px 20px rgba(37, 99, 235, 0.1)",
         transition: { 
           type: "spring", 
-          stiffness: 300, 
-          damping: 20 
+          stiffness: 400, 
+          damping: 15,
+          duration: 0.2
         }
       }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 1.02 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      style={{
+        transformOrigin: "center center",
+        willChange: "transform, box-shadow"
+      }}
     >
       {/* Image Container */}
       <div className="product-image-container">
-        <motion.div
-          className="product-image"
-          whileHover={{ 
-            scale: 1.1,
-            transition: { duration: 0.5, ease: "easeOut" }
-          }}
-        >
+        <div className="product-image">
           <Image
             src={product.image}
             alt={product.name}
@@ -60,7 +61,7 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
             className="object-cover"
             sizes="(max-width: 374px) 50vw, (max-width: 743px) 50vw, (max-width: 949px) 25vw, (max-width: 1127px) 20vw, (max-width: 1439px) 16.66vw, 14.28vw"
           />
-        </motion.div>
+        </div>
         
         {/* Favorite Button */}
         <FavoriteButton productId={product.id.toString()} />
