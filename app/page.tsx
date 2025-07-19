@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, ShoppingCart } from 'lucide-react'
+import { Heart, ShoppingCart, Search } from 'lucide-react'
 import SidebarMenu from '@/components/layout/SidebarMenu'
 import MobileBottomNav from '@/components/layout/MobileBottomNav'
 import SearchBar from '@/components/ui/SearchBar'
@@ -163,6 +163,7 @@ export default function HomePage() {
   const [filteredProducts, setFilteredProducts] = useState(allProducts)
   const [mobileTab, setMobileTab] = useState('home')
   const [isHeaderHovered, setIsHeaderHovered] = useState(false)
+  const [showMobileSearch, setShowMobileSearch] = useState(false)
   const { getFavoritesCount } = useFavoritesStore()
   const { isMenuOpen } = useMenuStore()
   const { scrollDirection, isAtTop, isMobile } = useScrollDirection()
@@ -233,7 +234,7 @@ export default function HomePage() {
             onMouseLeave={() => setIsHeaderHovered(false)}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between h-20">
+              <div className="flex items-center justify-between h-20 md:h-20 sm:h-16 h-14">
                 {/* Logo */}
                 <motion.div
                   className="flex items-center"
@@ -245,7 +246,7 @@ export default function HomePage() {
                   transition={{ delay: 0.2, duration: 0.3 }}
                 >
                   <motion.h1 
-                    className="text-2xl font-bold cursor-pointer" 
+                    className="text-2xl md:text-2xl sm:text-xl text-lg font-bold cursor-pointer" 
                     style={{ color: 'var(--app-primary)' }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -256,7 +257,7 @@ export default function HomePage() {
                 
                 {/* Search Bar */}
                 <motion.div
-                  className="flex-1 max-w-2xl mx-8"
+                  className="flex-1 max-w-2xl mx-8 hidden sm:block"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -266,7 +267,7 @@ export default function HomePage() {
                 
                 {/* Actions */}
                 <motion.div
-                  className="flex items-center space-x-3"
+                  className="flex items-center space-x-1 sm:space-x-3"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
@@ -284,9 +285,26 @@ export default function HomePage() {
                     🚀 Dev Dashboard
                   </motion.a>
                   
+                  {/* Botón de Búsqueda Móvil */}
+                  <motion.button 
+                    className="header-icon-button relative w-12 h-12 sm:hidden rounded-full flex items-center justify-center transition-all"
+                    style={{ backgroundColor: 'var(--app-surface)', color: 'var(--app-text)' }}
+                    onClick={() => setShowMobileSearch(!showMobileSearch)}
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: '0 8px 25px rgba(0, 122, 255, 0.15)'
+                    }}
+                    whileTap={{ 
+                      scale: 0.9,
+                      transition: { duration: 0.1 }
+                    }}
+                  >
+                    <Search className="w-5 h-5" strokeWidth={1.5} />
+                  </motion.button>
+                  
                   {/* Botón de Favoritos */}
                   <motion.button 
-                    className="header-icon-button relative w-12 h-12 rounded-full flex items-center justify-center transition-all"
+                    className="header-icon-button relative w-12 h-12 sm:w-12 sm:h-12 w-10 h-10 rounded-full flex items-center justify-center transition-all"
                     style={{ backgroundColor: 'var(--app-surface)', color: 'var(--app-text)' }}
                     whileHover={{ 
                       scale: 1.1,
@@ -302,7 +320,7 @@ export default function HomePage() {
                       whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Heart className="w-6 h-6" strokeWidth={1.5} />
+                      <Heart className="w-6 h-6 sm:w-6 sm:h-6 w-5 h-5" strokeWidth={1.5} />
                       {getFavoritesCount() > 0 && (
                         <motion.span
                           className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white text-xs font-bold pointer-events-none"
@@ -323,7 +341,7 @@ export default function HomePage() {
                   
                   {/* Botón de Carrito */}
                   <motion.button 
-                    className="header-icon-button relative w-12 h-12 rounded-full flex items-center justify-center transition-all"
+                    className="header-icon-button relative w-12 h-12 sm:w-12 sm:h-12 w-10 h-10 rounded-full flex items-center justify-center transition-all"
                     style={{ backgroundColor: 'var(--app-surface)', color: 'var(--app-text)' }}
                     whileHover={{ 
                       scale: 1.1,
@@ -339,7 +357,7 @@ export default function HomePage() {
                       whileHover={{ rotate: [0, -5, 5, -5, 0] }}
                       transition={{ duration: 0.4 }}
                     >
-                      <ShoppingCart className="w-6 h-6" strokeWidth={1.5} />
+                      <ShoppingCart className="w-6 h-6 sm:w-6 sm:h-6 w-5 h-5" strokeWidth={1.5} />
                       <motion.span
                         className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white text-xs font-bold pointer-events-none"
                         style={{ 
@@ -362,7 +380,22 @@ export default function HomePage() {
         </AnimatePresence>
 
         {/* Spacer para compensar el header fixed */}
-        <div className="h-20"></div>
+        <div className="h-20 md:h-20 sm:h-16 h-14"></div>
+
+        {/* Mobile Search Bar */}
+        <AnimatePresence>
+          {showMobileSearch && (
+            <motion.div
+              className="fixed top-14 sm:top-16 md:top-20 left-0 right-0 z-40 bg-white border-b border-gray-200 p-4 sm:hidden"
+              initial={{ y: -60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -60, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <SearchBar onSearch={handleSearch} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Hero Section */}
         <motion.section
@@ -377,7 +410,7 @@ export default function HomePage() {
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2
-              className="text-4xl md:text-6xl font-bold mb-4"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, type: "spring", stiffness: 300 }}
@@ -385,7 +418,7 @@ export default function HomePage() {
               Los mejores productos
             </motion.h2>
             <motion.p
-              className="text-xl md:text-2xl mb-8 opacity-90"
+              className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.7, type: "spring", stiffness: 300 }}
