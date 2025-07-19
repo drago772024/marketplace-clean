@@ -24,7 +24,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onClick }: ProductCardProps) {
-  const [isImageHovered, setIsImageHovered] = useState(false)
+  const [isCardHovered, setIsCardHovered] = useState(false)
   const { isFavorite } = useFavoritesStore()
   const isProductFavorite = isFavorite(product.id.toString())
   
@@ -42,13 +42,11 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
     <div
       className="product-card-app cursor-pointer transition-shadow duration-200 hover:shadow-lg"
       onClick={onClick}
+      onMouseEnter={() => setIsCardHovered(true)}
+      onMouseLeave={() => setIsCardHovered(false)}
     >
       {/* Image Container */}
-      <div 
-        className="product-image-container group relative"
-        onMouseEnter={() => setIsImageHovered(true)}
-        onMouseLeave={() => setIsImageHovered(false)}
-      >
+      <div className="product-image-container group relative">
         <div className="product-image">
           <Image
             src={product.image}
@@ -59,10 +57,10 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
           />
         </div>
         
-        {/* Favorite Button - Simplified */}
+        {/* Favorite Button - Shows on card hover */}
         <div 
           className="absolute top-3 right-3 transition-opacity duration-200"
-          style={{ opacity: isImageHovered || isProductFavorite ? 1 : 0 }}
+          style={{ opacity: isCardHovered || isProductFavorite ? 1 : 0 }}
         >
           <FavoriteButton productId={product.id.toString()} />
         </div>
