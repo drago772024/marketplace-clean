@@ -27,29 +27,9 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
     : 0
 
   return (
-    <motion.div
-      className="product-card-app"
+    <div
+      className="product-card-app cursor-pointer"
       onClick={onClick}
-      whileHover={{ 
-        y: -16,
-        scale: 1.08,
-        zIndex: 10,
-        boxShadow: "0 35px 60px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(37, 99, 235, 0.15)"
-      }}
-      transition={{ 
-        type: "tween", 
-        duration: 0.1,
-        ease: "easeOut"
-      }}
-      whileTap={{ scale: 1.05, y: -8 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0, zIndex: 1 }}
-      style={{
-        transformOrigin: "center center",
-        willChange: "transform, box-shadow, z-index",
-        position: "relative",
-        zIndex: 1
-      }}
     >
       {/* Image Container */}
       <div className="product-image-container">
@@ -87,12 +67,18 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       {/* Product Info */}
       <div className="p-4 flex-1 flex flex-col justify-between">
         {/* Category */}
-        <div className="text-sm mb-1" style={{ color: 'var(--app-text-secondary)' }}>
+        <div 
+          className="text-sm mb-1 transition-colors duration-200 hover:text-blue-500" 
+          style={{ color: 'var(--app-text-secondary)' }}
+        >
           {product.category}
         </div>
         
         {/* Product Name */}
-        <h4 className="font-semibold mb-2 line-clamp-2 text-base" style={{ color: 'var(--app-text)' }}>
+        <h4 
+          className="font-semibold mb-2 line-clamp-2 text-base transition-colors duration-200 hover:text-blue-600" 
+          style={{ color: 'var(--app-text)' }}
+        >
           {product.name}
         </h4>
         
@@ -109,7 +95,10 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
         {/* Price and Add Button */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold" style={{ color: 'var(--app-text)' }}>
+            <span 
+              className="text-lg font-bold transition-colors duration-200 hover:text-green-600" 
+              style={{ color: 'var(--app-text)' }}
+            >
               ${product.price}
             </span>
             {product.originalPrice && product.originalPrice > product.price && (
@@ -131,6 +120,6 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
