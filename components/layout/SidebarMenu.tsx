@@ -64,10 +64,9 @@ export default function SidebarMenu({
           scale: isMenuOpen ? 0.95 : 1
         }}
         transition={{ 
-          type: "spring",
-          stiffness: 1000,
-          damping: 35,
-          mass: 0.2
+          type: "tween",
+          duration: 0.05,
+          ease: "easeOut"
         }}
       >
         <motion.div
@@ -92,11 +91,9 @@ export default function SidebarMenu({
           x: 0
         }}
         transition={{
-          type: "spring",
-          stiffness: 800,
-          damping: 40,
-          mass: 0.3,
-          duration: 0.08
+          type: "tween",
+          duration: 0.05,
+          ease: "easeOut"
         }}
         style={{
           position: 'fixed',

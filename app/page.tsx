@@ -199,10 +199,9 @@ export default function HomePage() {
           marginLeft: isMenuOpen ? 280 : 8,
         }}
         transition={{
-          type: "spring",
-          stiffness: 800,
-          damping: 40,
-          mass: 0.3
+          type: "tween",
+          duration: 0.05,
+          ease: "easeOut"
         }}
         style={{
           minHeight: '100vh',
@@ -226,10 +225,9 @@ export default function HomePage() {
               left: isMenuOpen ? 280 : 8
             }}
             transition={{ 
-              type: isMobile ? "tween" : "spring", 
-              stiffness: 600, 
-              damping: 25,
-              duration: isMobile ? 0.15 : 0.3
+              type: "tween", 
+              duration: 0.05,
+              ease: "easeOut"
             }}
             onMouseEnter={() => setIsHeaderHovered(true)}
             onMouseLeave={() => setIsHeaderHovered(false)}
