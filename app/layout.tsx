@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Marketplace Clean - Tu tienda online',
-  description: 'Marketplace moderno y limpio con los mejores productos',
+  title: 'VendeMass - Marketplace del Futuro',
+  description: 'Marketplace moderno con sistema de recompensas anti-MLM y tecnología enterprise',
 }
 
 export default function RootLayout({
