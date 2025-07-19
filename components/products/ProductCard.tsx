@@ -65,75 +65,76 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
           <FavoriteButton productId={product.id.toString()} />
         </div>
       
-      {/* Discount Badge */}
-      {discountPercentage > 0 && (
-        <motion.div
-          className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-lg text-sm font-medium"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 500, 
-            damping: 15,
-            delay: 0.2 
-          }}
-        >
-          -{discountPercentage}%
-        </motion.div>
-      )}
-    </div>
-    
-    {/* Product Info */}
-    <div className="p-4 flex-1 flex flex-col justify-between">
-      {/* Category */}
-      <div 
-        className="text-sm mb-1 transition-colors duration-200 hover:text-blue-500" 
-        style={{ color: 'var(--app-text-secondary)' }}
-      >
-        {product.category}
-      </div>
-      
-      {/* Product Name */}
-      <h4 
-        className="font-semibold mb-2 line-clamp-2 text-base transition-colors duration-200 hover:text-blue-600" 
-        style={{ color: 'var(--app-text)' }}
-      >
-        {product.name}
-      </h4>
-      
-      {/* Rating */}
-      <div className="flex items-center mb-3">
-        <div className="flex items-center">
-          <Star className="w-4 h-4 text-yellow-400 fill-current" />
-          <span className="text-sm ml-1" style={{ color: 'var(--app-text-secondary)' }}>
-            {product.rating} ({product.reviews})
-          </span>
-        </div>
-      </div>
-      
-      {/* Price and Add Button */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <span 
-            className="text-lg font-bold transition-colors duration-200 hover:text-green-600" 
-            style={{ color: 'var(--app-text)' }}
+        {/* Discount Badge */}
+        {discountPercentage > 0 && (
+          <motion.div
+            className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-lg text-sm font-medium"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 500, 
+              damping: 15,
+              delay: 0.2 
+            }}
           >
-            ${product.price}
-          </span>
-          {product.originalPrice && product.originalPrice > product.price && (
-            <span className="text-sm line-through" style={{ color: 'var(--app-text-secondary)' }}>
-              ${product.originalPrice}
-            </span>
-          )}
+            -{discountPercentage}%
+          </motion.div>
+        )}
+      </div>
+      
+      {/* Product Info */}
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        {/* Category */}
+        <div 
+          className="text-sm mb-1 transition-colors duration-200 hover:text-blue-500" 
+          style={{ color: 'var(--app-text-secondary)' }}
+        >
+          {product.category}
         </div>
         
-        <button
-          className="app-button px-3 py-2 text-sm flex items-center space-x-1"
-          onClick={handleAddToCart}
+        {/* Product Name */}
+        <h4 
+          className="font-semibold mb-2 line-clamp-2 text-base transition-colors duration-200 hover:text-blue-600" 
+          style={{ color: 'var(--app-text)' }}
         >
-          <ShoppingCart className="w-4 h-4" />
-          <span>Agregar</span>
-        </button>
+          {product.name}
+        </h4>
+        
+        {/* Rating */}
+        <div className="flex items-center mb-3">
+          <div className="flex items-center">
+            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+            <span className="text-sm ml-1" style={{ color: 'var(--app-text-secondary)' }}>
+              {product.rating} ({product.reviews})
+            </span>
+          </div>
+        </div>
+        
+        {/* Price and Add Button */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span 
+              className="text-lg font-bold transition-colors duration-200 hover:text-green-600" 
+              style={{ color: 'var(--app-text)' }}
+            >
+              ${product.price}
+            </span>
+            {product.originalPrice && product.originalPrice > product.price && (
+              <span className="text-sm line-through" style={{ color: 'var(--app-text-secondary)' }}>
+                ${product.originalPrice}
+              </span>
+            )}
+          </div>
+          
+          <button
+            className="app-button px-3 py-2 text-sm flex items-center space-x-1"
+            onClick={handleAddToCart}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span>Agregar</span>
+          </button>
+        </div>
       </div>
     </div>
   )
